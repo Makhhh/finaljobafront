@@ -1,0 +1,75 @@
+.face-login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #f7faff;
+}
+
+.face-login-card {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+  text-align: center;
+  width: 400px;
+}
+
+.face-login-card h1 {
+  font-size: 28px;
+  color: #1a237e;
+  margin-bottom: 24px;
+}
+
+.camera-box {
+  margin-bottom: 20px;
+}
+
+.video-preview {
+  width: 320px;
+  height: 240px;
+  border-radius: 12px;
+  border: 2px solid #1a237e;
+}
+
+.scan-button {
+  background-color: #1a237e;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 16px;
+}
+
+.scan-button:hover {
+  background-color: #0d1b66;
+}
+
+.result-text {
+  margin-top: 16px;
+  font-size: 16px;
+  color: #333;
+}
+@media (max-width: 480px) {
+  .face-login-card {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+
+  .face-login-card h1 {
+    font-size: 22px;
+  }
+
+  .scan-button {
+    font-size: 15px;
+    padding: 0.8rem 1rem;
+  }
+
+  .result-text {
+    font-size: 15px;
+  }
+}

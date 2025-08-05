@@ -1,0 +1,151 @@
+body{
+  background-color: #dbeafe;
+}
+
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  background-color: #dbeafe;
+  padding: 1rem;
+}
+
+.profile-card {
+  background-color: white;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+  color: #1e3a8a;
+}
+
+.welcome {
+  margin-top: 10px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.info-card {
+  background-color: #f8f9ff;
+  padding: 18px 20px;
+  border-radius: 12px;
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+.label {
+  font-weight: 700;
+  color: #1e40af;
+  margin-bottom: 6px;
+  font-size: 15px;
+}
+
+.value {
+  font-weight: 500;
+  color: #333;
+  font-size: 15px;
+}
+
+.status-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 16px;
+  margin-top: 6px;
+}
+
+.status-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-dot.green {
+  background-color: #22c55e;
+}
+
+.status-dot.red {
+  background-color: #af9c9c;
+}
+
+.status-text {
+  color: #222;
+}
+
+.status-dot.red + .status-text {
+  color: #6b7280;
+}
+
+.settings-button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.settings-button:hover {
+  background-color: #2563eb;
+}
+
+.logout-button {
+  margin-top: 1.5rem;
+  width: 100%;
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 0.8rem 1.6rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.logout-button:hover {
+  background: #dc2626;
+}
+
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 1rem;
+  }
+
+  .profile-card {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+}
+.system-info-blue {
+  border-left: 5px solid #1e40af;
+  padding-left: 1rem;
+}
+
+.login-history {
+  padding-left: 1rem;
+  font-size: 0.9rem;
+  color: #333;
+  list-style: disc;
+}
+
+.login-history li {
+  margin-bottom: 4px;
+}

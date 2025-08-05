@@ -1,0 +1,104 @@
+.face-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px;
+  height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  background: #eaf4ff;
+}
+
+.face-box {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+}
+
+.face-box h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin-bottom: 30px;
+}
+
+.camera-box {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.video-preview {
+  width: 320px;
+  height: 240px;
+  border-radius: 12px;
+  border: 3px solid #3b82f6;
+  background: #000;
+}
+
+.face-box button {
+  padding: 12px 24px;
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.face-box button:hover {
+  background-color: #1d4ed8;
+}
+
+.face-box button:disabled {
+  background-color: #93c5fd;
+  cursor: not-allowed;
+}
+
+.result-text {
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #334155;
+}
+@media (max-width: 768px) {
+  .face-box {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+
+  .face-box h1 {
+    font-size: 22px;
+    margin-bottom: 1.5rem;
+  }
+
+  .video-preview {
+    width: 100%;
+    height: auto;
+  }
+
+  .face-box button {
+    width: 100%;
+    font-size: 15px;
+    padding: 0.9rem 1rem;
+  }
+
+  .result-text {
+    font-size: 15px;
+    margin-top: 1rem;
+  }
+}
+.video-preview {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 3px solid #3b82f6;
+  background: #000;
+}
+
