@@ -58,6 +58,18 @@ body {
   color: #1e3a8a;
   align-self: flex-start;
 }
+.Kaitu{
+   background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.Kaitu:hover {
+  background-color: #1e40af;
+}
 
 .support-form {
   display: flex;
