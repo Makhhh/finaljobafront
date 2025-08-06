@@ -17,7 +17,7 @@ export default function Support() {
 
     try {
       const res = await axios.post(
-        "/api/support",
+        "https://finaljoba.onrender.com/api/support",
         { message: input },
         {
           headers: {
