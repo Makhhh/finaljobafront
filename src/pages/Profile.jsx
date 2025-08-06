@@ -95,7 +95,15 @@ function Profile() {
         <button className="settings-button" onClick={goToSettings}>
           ⚙️ Баптаулар
         </button>
+        
       </div>
+      <button
+         className="support-float-button"
+         onClick={() => navigate("/support")}
+        >
+         💬 Суппорт
+      </button>
+
     </div>
   );
 }

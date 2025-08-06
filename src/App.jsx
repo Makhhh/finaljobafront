@@ -5,7 +5,8 @@ import Register from "./pages/Register";
 import Profile from './pages/Profile';
 import Face from './pages/Face';
 import FaceLogin from './pages/FaceLogin';
-import Settings from './pages/Settings'; // 👈 добавлено
+import Settings from './pages/Settings'; 
+import Support from "./pages/Support";
 import ProtectedRoute from './protect/ProtectedRoute'; 
 
 function App() {
@@ -30,6 +31,14 @@ function App() {
               <Settings />
             </ProtectedRoute>
           }
+        />
+         <Route
+           path="/support"
+            element={
+            <ProtectedRoute>
+             <Support />
+             </ProtectedRoute>
+           }
         />
         <Route path="/face" element={<Face />} />
         <Route path="/face-login" element={<FaceLogin />} />

@@ -1,0 +1,85 @@
+body {
+  background-color: #dbeafe;
+}
+
+.support-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  background-color: #dbeafe;
+  padding: 1rem;
+}
+
+.support-box {
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  max-width: 500px;
+  width: 100%;
+  padding: 24px;
+}
+
+.support-title {
+  font-size: 20px;
+  color: #1e40af;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.support-messages {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.support-message {
+  padding: 10px 14px;
+  border-radius: 12px;
+  max-width: 80%;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.support-message.user {
+  background-color: #3b82f6;
+  color: white;
+  align-self: flex-end;
+}
+
+.support-message.bot {
+  background-color: #f1f5f9;
+  color: #1e3a8a;
+  align-self: flex-start;
+}
+
+.support-form {
+  display: flex;
+  gap: 8px;
+}
+
+.support-form input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.support-form button {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.support-form button:hover {
+  background-color: #1e40af;
+}
