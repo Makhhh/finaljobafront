@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Support.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function Support() {
   const [messages, setMessages] = useState([]);
@@ -65,9 +66,9 @@ export default function Support() {
           <button type="submit">Жіберу</button>
         </form>
       </div>
-      <button onClick={() => navigate("/profile")}>
+      <Link to={'/profile'}>
            Қайту
-     </button>
+     </Link>
     </div>
   );
 }
