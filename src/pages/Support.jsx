@@ -66,7 +66,7 @@ export default function Support() {
           <button type="submit">Жіберу</button>
         </form>
       </div>
-      <Link to={'/profile'}>
+      <Link className="Kaitu" to={'/profile'}>
            Қайту
      </Link>
     </div>
