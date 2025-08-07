@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 import { useNavigate, Link } from 'react-router-dom';
 import './Register.css';
 
@@ -33,8 +34,8 @@ export default function Register() {
       }
 
       localStorage.setItem('user', JSON.stringify(data.user));
-      alert("✅ Тіркеу сәтті өтті!");
-      navigate('/Login');
+      toast.success('✅ Тіркеу сәтті өтті!');
+      navigate('/login');
     } catch (err) {
       console.error(err);
       setError('Сервер қатесі');
@@ -48,7 +49,7 @@ export default function Register() {
         <input
           type="text"
           name="username"
-          placeholder="Атыныз"
+          placeholder="Username"
           onChange={handleChange}
           required
         />

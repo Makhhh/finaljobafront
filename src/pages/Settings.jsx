@@ -13,6 +13,8 @@ export default function Settings() {
   const [showFace, setShowFace] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [showConfirmLogout, setShowConfirmLogout] = useState(false);
+
 
   useEffect(() => {
     fetchUser();
@@ -81,8 +83,8 @@ export default function Settings() {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("user");
-    navigate("/login");
+  localStorage.clear(); 
+  navigate('/login');  
   };
 
   return (
@@ -148,6 +150,23 @@ export default function Settings() {
             Қайту
           </button>
         </div>
+        <button className="logout-button" onClick={() => setShowConfirmLogout(true)}>
+         Шығу
+        </button>
+        {showConfirmLogout && (
+        <div className="modal-overlay">
+           <div className="modal">
+              <p>Шығу үшін сенімдісіз бе?</p>
+          <div className="modal-buttons">
+              <button onClick={handleLogout} className="confirm-yes">Иә</button>
+              <button onClick={() => setShowConfirmLogout(false)} className="confirm-no">Жоқ</button>
+        </div>
+      </div>
+  </div>
+)}
+
+
+
 
         {success && <p className="success">{success}</p>}
         {error && <p className="error">{error}</p>}
