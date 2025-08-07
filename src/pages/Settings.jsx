@@ -5,11 +5,12 @@ import { useNavigate } from "react-router-dom";
 
 export default function Settings() {
   const navigate = useNavigate();
-  const userData = JSON.parse(localStorage.getItem("user")) || {};
-  const [name, setName] = useState(userData.username || "");
-  const [faceImage, setFaceImage] = useState(userData.face_image || null);
+  const storedUser = JSON.parse(localStorage.getItem("user")) || {};
+  const token = storedUser.token;
+
+  const [name, setName] = useState(storedUser.username || "");
+  const [faceImage, setFaceImage] = useState(storedUser.face_image || null);
   const [showFace, setShowFace] = useState(false);
-  const [token] = useState(userData.token || "");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
@@ -19,12 +20,15 @@ export default function Settings() {
 
   const fetchUser = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/users/me`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/users/me`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       localStorage.setItem("user", JSON.stringify({ ...res.data, token }));
       setName(res.data.username);
-      setFaceImage(res.data.face_image);
+      setFaceImage(res.data.face_image || null);
     } catch (err) {
       console.error("Қате:", err);
       setError("Пайдаланушы мәліметтері алынбады");
@@ -32,11 +36,15 @@ export default function Settings() {
   };
 
   const updateName = async () => {
+    setError("");
+    setSuccess("");
     try {
       const res = await axios.put(
         `${import.meta.env.VITE_API_URL}/api/users/me`,
         { username: name },
-        { headers: { Authorization: `Bearer ${token}` } }
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
       );
       localStorage.setItem("user", JSON.stringify({ ...res.data, token }));
       setSuccess("Атыңыз сәтті жаңартылды ✅");
@@ -47,11 +55,16 @@ export default function Settings() {
   };
 
   const deleteFace = async () => {
+    setError("");
+    setSuccess("");
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/api/users/face`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      const updatedUser = { ...userData, face_image: null };
+      await axios.delete(
+        `${import.meta.env.VITE_API_URL}/api/users/face`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      const updatedUser = { ...storedUser, face_image: null };
       localStorage.setItem("user", JSON.stringify(updatedUser));
       setFaceImage(null);
       setShowFace(false);
@@ -63,7 +76,7 @@ export default function Settings() {
   };
 
   const goToAddFace = () => {
-    localStorage.setItem("face_email", userData.email);
+    localStorage.setItem("face_email", storedUser.email);
     navigate("/face");
   };
 
@@ -95,8 +108,12 @@ export default function Settings() {
                 <span className="status-dot green" />
                 <span className="status-text">Тіркелген</span>
               </div>
-              {showFace && (
-                <img src={faceImage} alt="Face" className="face-preview" />
+              {showFace && faceImage.startsWith("data:image") && (
+                <img
+                  src={faceImage}
+                  alt="Face"
+                  className="face-preview"
+                />
               )}
               <div className="face-buttons">
                 <button
@@ -123,18 +140,17 @@ export default function Settings() {
           )}
         </div>
 
-             <div className="button-row">
-        <button className="save-button" onClick={updateName}>
-           Сақтау
-        </button>
-        <button className="back-button" onClick={() => navigate("/profile")}>
-           Қайту
-         </button>
+        <div className="button-row">
+          <button className="save-button" onClick={updateName}>
+            Сақтау
+          </button>
+          <button className="back-button" onClick={() => navigate("/profile")}>
+            Қайту
+          </button>
         </div>
 
         {success && <p className="success">{success}</p>}
         {error && <p className="error">{error}</p>}
-
       </div>
     </div>
   );

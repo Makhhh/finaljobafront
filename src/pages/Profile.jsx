@@ -20,12 +20,12 @@ function Profile() {
   useEffect(() => {
     const fetchLogins = async () => {
       try {
-        const res = await axios.get("/api/users/logins", {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/users/logins`, {
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
         });
-        console.log("loginHistory:", res.data); // Для отладки
+        console.log("loginHistory:", res.data); 
         if (Array.isArray(res.data)) {
           setLoginHistory(res.data);
         } else {

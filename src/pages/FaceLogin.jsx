@@ -46,7 +46,7 @@ export default function FaceLogin() {
       const data = await res.json();
 
       if (res.ok && data.message.includes('✅')) {
-        const userRes = await fetch(`${import.meta.env.VITE_API_URL}/users`);
+        const userRes = await fetch(`${import.meta.env.VITE_API_URL}/api/users`);
         const users = await userRes.json();
         const matchedUser = users.find(u => u.email === email);
         if (matchedUser) {
