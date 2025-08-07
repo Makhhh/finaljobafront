@@ -23,49 +23,43 @@ export default function FaceLogin() {
   }, []);
 
   const handleScan = async () => {
-    const email = localStorage.getItem('face_email');
-    if (!email) {
-      setMessage('Email табылмады. Алдымен логин парақшасынан кіріңіз.');
-      return;
+  const email = localStorage.getItem('face_email');
+  if (!email) {
+    setMessage('Email табылмады. Алдымен логин парақшасынан кіріңіз.');
+    return;
+  }
+
+  setIsScanning(true);
+  setMessage('');
+
+  const context = canvasRef.current.getContext('2d');
+  context.drawImage(videoRef.current, 0, 0, 320, 240);
+  const imageData = canvasRef.current.toDataURL('image/png');
+
+  try {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/compare-face`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, imageData })
+    });
+
+    const data = await res.json();
+
+    if (res.ok && data.message.includes('✅')) {
+      localStorage.setItem('user_email', email); // Немесе басқа қажет мәлімет
+      navigate('/profile');
+    } else {
+      setMessage(data.message || '❌ Face ID сәйкес келмеді');
     }
 
-    setIsScanning(true);
-    setMessage('');
+  } catch (err) {
+    console.error(err);
+    setMessage('❌ Қате пайда болды');
+  }
 
-    const context = canvasRef.current.getContext('2d');
-    context.drawImage(videoRef.current, 0, 0, 320, 240);
-    const imageData = canvasRef.current.toDataURL('image/png');
+  setIsScanning(false);
+};
 
-    try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/compare-face`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, imageData })
-      });
-
-      const data = await res.json();
-
-      if (res.ok && data.message.includes('✅')) {
-        const userRes = await fetch(`${import.meta.env.VITE_API_URL}/api/users`);
-        const users = await userRes.json();
-        const matchedUser = users.find(u => u.email === email);
-        if (matchedUser) {
-          localStorage.setItem('user', JSON.stringify(matchedUser));
-          navigate('/profile');
-        } else {
-          setMessage('Қате: қолданушы табылмады');
-        }
-      } else {
-        setMessage(data.message || '❌ Face ID сәйкес келмеді');
-      }
-
-    } catch (err) {
-      console.error(err);
-      setMessage('❌ Қате пайда болды');
-    }
-
-    setIsScanning(false);
-  };
 
   return (
     <div className="face-login-container">
