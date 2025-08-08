@@ -46,8 +46,9 @@ export default function FaceLogin() {
     const data = await res.json();
 
     if (res.ok && data.message.includes('✅')) {
-      localStorage.setItem('user_email', email); // Немесе басқа қажет мәлімет
       navigate('/profile');
+      localStorage.setItem('user_email', email); 
+      
     } else {
       setMessage(data.message || '❌ Face ID сәйкес келмеді');
     }

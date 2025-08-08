@@ -6,11 +6,14 @@ export default function ProtectedRoute({ children }) {
 
   try {
     user = JSON.parse(localStorage.getItem('user'));
-  } catch (err) {
+  } catch {
     user = null;
   }
 
-  if (!user || !user.email) {
+
+  const userEmail = localStorage.getItem('user_email');
+
+  if ((!user || !user.token) && !userEmail) {
     return <Navigate to="/login" replace />;
   }
 

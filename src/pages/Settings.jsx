@@ -83,9 +83,9 @@ export default function Settings() {
   };
 
   const handleLogout = () => {
-  localStorage.clear(); 
-  navigate('/login');  
-  };
+  localStorage.removeItem("user");      
+  navigate('/login');
+};
 
   return (
     <div className="settings-container">
